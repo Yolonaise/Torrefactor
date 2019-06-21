@@ -9,6 +9,7 @@
       <ColumnDefinition Width="*"/>
       <ColumnDefinition Width="Auto"/>
     </Grid.ColumnDefinitions>
+    <TextBlock x:Name="title" Text="TITLE" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="60,0" FontSize="25"/>
     <md:PopupBox Grid.Column="2" Foreground="White" Margin="10" PlacementMode="BottomAndAlignRightEdges">
       <StackPanel>
         <Button Content="Close"/>

@@ -11,7 +11,7 @@
       <RowDefinition Height="60"/>
       <RowDefinition/>
     </Grid.RowDefinitions>
-    <v:Header ></v:Header>
+    <v:Header Title="{Binding Menu.SelectedFeature.Title}"></v:Header>
     <ContentControl Grid.Row="1" Content="{Binding CurrentFeature}" Margin="60,0,0,0" />
     <Grid Grid.Row="1" Visibility="{Binding Menu.IsOpen, Converter={StaticResource BooleanToVisibility}}" Background="#70000000"/>
     <Grid Grid.Row="0" Grid.RowSpan="2">

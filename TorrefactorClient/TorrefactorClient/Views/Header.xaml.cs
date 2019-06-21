@@ -15,11 +15,32 @@ using System.Windows.Shapes;
 
 namespace TorrefactorClient.Views
 {
-  /// <summary>
-  /// Interaction logic for MainMenu.xaml
-  /// </summary>
   public partial class Header : Grid
   {
+
+
+    public string Title
+    {
+      get { return (string)GetValue(TitleProperty); }
+      set { SetValue(TitleProperty, value); }
+    }
+
+    public static readonly DependencyProperty TitleProperty =
+        DependencyProperty.Register("Title", typeof(string), typeof(Header), new PropertyMetadata("Title", new PropertyChangedCallback(OnTitlechanged)));
+
+    private static void OnTitlechanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+    {
+      Header h = d as Header;
+      if (h == null)
+        return;
+
+      string t = e.NewValue as string;
+      if (t == null)
+        return;
+
+      h.title.Text = t.ToUpper();
+    }
+
     public Header()
     {
       InitializeComponent();
