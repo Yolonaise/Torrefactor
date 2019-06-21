@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Workspace\Current_Dev\Personal\Torrefactor\Torrefactor\TorrefactorClient\TorrefactorClient\App.xaml
-11151548125
+31544107757
 
-6-439968000
-13-1505183044
-MainWindow.xaml;
+14-1035413254
+15-403166141
+MainWindow.xaml;Views\Menu.xaml;Views\Header.xaml;
 
-True
+False
 

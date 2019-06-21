@@ -3,10 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TorrefactorClient"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        xmlns:v="clr-namespace:TorrefactorClient.Views"
+        Height="450" Width="800" WindowStartupLocation="CenterScreen"
+        Background="LightGray">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="70"/>
+      <RowDefinition/>
+    </Grid.RowDefinitions>
+    <v:Header ></v:Header>
+    <Grid Grid.Row="0" Grid.RowSpan="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition/>
+      </Grid.ColumnDefinitions>
+      <v:Menu></v:Menu>
     </Grid>
+  </Grid>
 </Window>
