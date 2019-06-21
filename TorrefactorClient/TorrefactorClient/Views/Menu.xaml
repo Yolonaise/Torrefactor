@@ -72,7 +72,7 @@
       </Button>
     </Grid>
     <StackPanel x:Name="FeaturesContainer">
-      <ListView VerticalAlignment="Center" HorizontalAlignment="Left" ItemsSource="{Binding Features}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedItem="{Binding SelectedFeature, Mode=TwoWay}">
+      <ListView VerticalAlignment="Center" HorizontalAlignment="Left" ItemsSource="{Binding Features}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedItem="{Binding SelectedFeature, Mode=TwoWay}" Margin="0,20">
         <ListView.ItemTemplate>
           <DataTemplate>
             <Grid>
@@ -90,8 +90,8 @@
       </ListView>
 
       <Grid Margin="10" Height="1" Background="White"/>
-      
-      <ListView  VerticalAlignment="Bottom" ItemsSource="{Binding Options}" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedItem="{Binding SelectedFeature, Mode=TwoWay}">
+
+      <ListView  VerticalAlignment="Bottom" ItemsSource="{Binding Options}" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SelectedItem="{Binding SelectedFeature, Mode=TwoWay}" Margin="0,20">
         <ListView.ItemTemplate>
           <DataTemplate>
             <Grid>
