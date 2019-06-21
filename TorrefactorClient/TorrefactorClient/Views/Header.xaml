@@ -1,15 +1,13 @@
 ﻿<Grid x:Class="TorrefactorClient.Views.Header"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes">
   <Grid Background="#B22D570B">
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="*"/>
       <ColumnDefinition Width="Auto"/>
     </Grid.ColumnDefinitions>
-    <TextBlock x:Name="title" Text="TITLE" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="60,0" FontSize="25"/>
+    <TextBlock x:Name="title" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="60,0" FontSize="25"/>
     <md:PopupBox Grid.Column="2" Foreground="White" Margin="10" PlacementMode="BottomAndAlignRightEdges">
       <StackPanel>
         <Button Content="Close"/>
