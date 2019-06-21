@@ -3,6 +3,9 @@ using TorrefactorClient.Models.Ui;
 using MaterialDesignThemes.Wpf;
 using TorrefactorClient.Helpers.Ui;
 using System;
+using System.Windows.Input;
+using System.Windows;
+using TorrefactorClient.Views.Features;
 
 namespace TorrefactorClient.ViewModels.Ui
 {
@@ -10,11 +13,22 @@ namespace TorrefactorClient.ViewModels.Ui
   {
     private ObservableCollection<MenuFeature> _features;
     private MenuFeature _selectedFeature;
+    private bool _isOpen;
+
+    public CmdBinding<MenuFeature> Command { get; set; }
+    public CmdBinding CommandOpen { get; protected set; }
+    public CmdBinding CommandClose { get; protected set; }
 
     public ObservableCollection<MenuFeature> Features
     {
       get { return _features; }
       set { _features = value; Notify(); }
+    }
+
+    public bool IsOpen
+    {
+      get { return _isOpen; }
+      set { _isOpen = value; Notify(); }
     }
 
     public MenuFeature SelectedFeature
@@ -30,15 +44,32 @@ namespace TorrefactorClient.ViewModels.Ui
         if (_selectedFeature != null)
           _selectedFeature.IsSelected = true;
 
-        Notify(); }
+        if (Command != null)
+          Command.Execute(SelectedFeature);
+
+        Notify();
+      }
     }
 
     public MenuViewModel()
     {
+      CommandOpen = new CmdBinding(Open);
+      CommandClose = new CmdBinding(Close);
+
       _features = new ObservableCollection<MenuFeature>();
 
-      _features.Add(new MenuFeature { Icon = PackIconKind.ViewDashboard , Title = "Dashboard" });
-      _features.Add(new MenuFeature { Icon = PackIconKind.ChartBubble , Title = "Charts" });
+      _features.Add(new MenuFeature { Icon = PackIconKind.ViewDashboard , Title = "Dashboard", View = new Home() });
+      _features.Add(new MenuFeature { Icon = PackIconKind.ChartBubble , Title = "Charts", View = new Charts() });
+    }
+
+    private void Open()
+    {
+      IsOpen = true;
+    }
+
+    private void Close()
+    {
+      IsOpen = false;
     }
   }
 }

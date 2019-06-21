@@ -62,13 +62,13 @@
     </EventTrigger>
   </Grid.Triggers>
   <StackPanel Background="#CC083008">
-    <Grid Background="#FFFFFF" Height="70">
+    <Grid Background="#FFFFFF" Height="60">
       <TextBlock x:Name="MenuTitle" Text="MENU" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" Foreground="Gray" FontSize="25"></TextBlock>
-      <Button x:Name="ButtonMenuOpen" Height="60" Width="60" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Right" VerticalAlignment="Center" >
-        <md:PackIcon Kind="Menu" Foreground="Gray" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      <Button x:Name="ButtonMenuOpen" Height="60" Width="60" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Right" VerticalAlignment="Center" Command="{Binding CommandOpen}">
+        <md:PackIcon Kind="Menu" Foreground="Gray" Width="25" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
       </Button>
-      <Button x:Name="ButtonMenuClose" Height="60" Width="0" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Right" VerticalAlignment="Center" >
-        <md:PackIcon Kind="ArrowLeft" Foreground="Gray" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      <Button x:Name="ButtonMenuClose" Height="60" Width="0" Background="{x:Null}" BorderBrush="{x:Null}"  HorizontalAlignment="Right" VerticalAlignment="Center" Command="{Binding CommandClose}">
+        <md:PackIcon Kind="ArrowLeft" Foreground="Gray" Width="25" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center"/>
       </Button>
     </Grid>
     <Grid>

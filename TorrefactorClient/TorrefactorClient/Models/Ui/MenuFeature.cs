@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace TorrefactorClient.Models.Ui
 {
@@ -12,6 +13,7 @@ namespace TorrefactorClient.Models.Ui
     private bool _isSelected;
     private PackIconKind _icon;
     private string _title;
+    private FrameworkElement _view;
 
     public PackIconKind Icon
     {
@@ -29,6 +31,12 @@ namespace TorrefactorClient.Models.Ui
     {
       get { return _isSelected; }
       set { _isSelected = value; Notify(); }
+    }
+
+    public FrameworkElement View
+    {
+      get { return _view; }
+      set { _view = value; Notify(); }
     }
   }
 }

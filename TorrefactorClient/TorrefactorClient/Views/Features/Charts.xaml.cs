@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TorrefactorClient.ViewModels.Ui;
 
-namespace TorrefactorClient.Views
+namespace TorrefactorClient.Views.Features
 {
   /// <summary>
-  /// Interaction logic for Menu.xaml
+  /// Interaction logic for Charts.xaml
   /// </summary>
-  public partial class Menu : Grid
+  public partial class Charts : Grid
   {
-    public Menu()
+    public Charts()
     {
       InitializeComponent();
     }
