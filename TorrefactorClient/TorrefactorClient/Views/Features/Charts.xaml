@@ -5,6 +5,6 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008">
 
   <Grid>
-    <TextBlock Text="CHARTS"/>
+    <TextBlock Text="CHARTS" FontWeight="Black" FontSize="40" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
   </Grid>
 </Grid>

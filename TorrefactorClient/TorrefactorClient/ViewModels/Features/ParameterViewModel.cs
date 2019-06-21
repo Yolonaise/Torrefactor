@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TorrefactorClient.ViewModels.Features
 {
-  public class HomeViewModel : BaseViewModel
+  public class ParameterViewModel : BaseViewModel
   {
   }
 }

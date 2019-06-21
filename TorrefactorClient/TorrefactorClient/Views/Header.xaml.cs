@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TorrefactorClient.ViewModels;
 
 namespace TorrefactorClient.Views
 {
@@ -44,6 +45,19 @@ namespace TorrefactorClient.Views
     public Header()
     {
       InitializeComponent();
+    }
+
+    private void CloseClick(object sender, RoutedEventArgs e)
+    {
+      App.Current.MainWindow.Close();
+    }
+
+    private void SettingsClick(object sender, RoutedEventArgs e)
+    {
+      if (MainViewModel.Instance.Menu != null)
+        if (MainViewModel.Instance.Menu.Options != null)
+          if (MainViewModel.Instance.Menu.Options.Count > 0)
+            MainViewModel.Instance.Menu.SelectedFeature = MainViewModel.Instance.Menu.Options[0];
     }
   }
 }

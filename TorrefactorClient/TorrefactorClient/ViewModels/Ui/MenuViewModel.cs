@@ -75,7 +75,7 @@ namespace TorrefactorClient.ViewModels.Ui
       _features.Add(new MenuFeature { Icon = PackIconKind.ViewDashboard , Title = "Dashboard", View = new Home() });
       _features.Add(new MenuFeature { Icon = PackIconKind.ChartBubble , Title = "Charts", View = new Charts() });
 
-      _options.Add(new MenuFeature { Icon = PackIconKind.Settings, Title = "Settings", View = new Charts() });
+      _options.Add(new MenuFeature { Icon = PackIconKind.Settings, Title = "Settings", View = new Parameter() });
     }
 
     private void Open()

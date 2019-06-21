@@ -10,8 +10,8 @@
     <TextBlock x:Name="title" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="60,0" FontSize="25"/>
     <md:PopupBox Grid.Column="2" Foreground="White" Margin="10" PlacementMode="BottomAndAlignRightEdges">
       <StackPanel>
-        <Button Content="Close"/>
-        <Button Content="Settings"/>
+        <Button Content="Close" Click="CloseClick"/>
+        <Button Content="Settings" Click="SettingsClick"/>
       </StackPanel>
     </md:PopupBox>
   </Grid>

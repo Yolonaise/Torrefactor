@@ -67,6 +67,7 @@
     <Compile Include="Models\Ui\MenuFeature.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Features\HomeViewModel.cs" />
+    <Compile Include="ViewModels\Features\ParameterViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Ui\MenuViewModel.cs" />
     <Compile Include="Views\Features\Charts.xaml.cs">
@@ -74,6 +75,9 @@
     </Compile>
     <Compile Include="Views\Features\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Features\Parameter.xaml.cs">
+      <DependentUpon>Parameter.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
@@ -98,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Features\Home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Features\Parameter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
