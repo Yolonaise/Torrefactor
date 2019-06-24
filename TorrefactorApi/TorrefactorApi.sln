@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorrefactorApi", "TorrefactorApi\TorrefactorApi.csproj", "{B093A078-2E1E-4D07-93E0-56DB22DD1110}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B093A078-2E1E-4D07-93E0-56DB22DD1110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B093A078-2E1E-4D07-93E0-56DB22DD1110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B093A078-2E1E-4D07-93E0-56DB22DD1110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B093A078-2E1E-4D07-93E0-56DB22DD1110}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7CA0626B-038B-4296-8201-3E4A2AD24559}
+	EndGlobalSection
+EndGlobal
