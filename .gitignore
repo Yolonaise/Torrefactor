@@ -1,3 +1,5 @@
 .vs
 /TorrefactorClient/TorrefactorClient/bin
 /TorrefactorClient/TorrefactorClient/obj
+/TorrefactorApi/TorrefactorApi/bin
+/TorrefactorApi/TorrefactorApi/obj

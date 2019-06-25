@@ -1,8 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TorrefactorApi.Context
 {
@@ -13,6 +9,6 @@ namespace TorrefactorApi.Context
 
     }
 
-    DbSet<User> Users { get; set; }
+    public DbSet<User> Users { get; set; }
   }
 }

@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TorrefactorApi.Context;
+using TorrefactorApi.Repository.Profile;
+using TorrefactorApi.Repository.Repos;
 
 namespace TorrefactorApi
 {
@@ -26,8 +22,17 @@ namespace TorrefactorApi
     // This method gets called by the runtime. Use this method to add services to the container.
     public void ConfigureServices(IServiceCollection services)
     {
+      var mappingConfig = new AutoMapper.MapperConfiguration(cfg =>
+      {
+        cfg.AddProfile(new MapperProfile());
+      });
+      var mapper = mappingConfig.CreateMapper();
+
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
       services.AddDbContext<UserDbContext>(item => item.UseSqlServer(Configuration.GetConnectionString("myconn")));
+      services.AddTransient<UserDbContext>();
+      services.AddTransient<IUserRepo, UserRepo>();
+      services.AddSingleton(mapper);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
