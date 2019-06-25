@@ -39,9 +39,7 @@ namespace TorrefactorApi
       services.AddDbContext<UserDbContext>(item => item.UseSqlServer(Configuration.GetConnectionString("myconn")));
       services.AddTransient<UserDbContext>();
       services.AddTransient<IUserRepo, UserRepo>();
-      services.AddTransient<IUserListener, UserListennerA>();
-      services.AddTransient<IUserListener, UserListennerC>();
-      services.AddTransient<IUserListener, UserListennerB>();
+      services.AddTransient<IUserListener, TokenService>();
       services.AddTransient<IUserService, UserService>();
       services.AddSingleton(mapper);
 

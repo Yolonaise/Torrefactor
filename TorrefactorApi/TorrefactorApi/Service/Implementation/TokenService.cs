@@ -19,6 +19,7 @@ namespace TorrefactorApi.Service.Implementation
 
     public void OnUserCreated(User user)
     {
+
     }
   }
 }

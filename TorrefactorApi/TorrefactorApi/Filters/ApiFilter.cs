@@ -23,6 +23,7 @@ namespace TorrefactorApi.Filters
 
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
+      await _context.SaveChangesAsync();
       var controllerActionDescriptor = context.ActionDescriptor as ControllerActionDescriptor;
 
       if (CheckApi(context, controllerActionDescriptor == null ? null : controllerActionDescriptor.MethodInfo.GetCustomAttributes(inherit: true)))

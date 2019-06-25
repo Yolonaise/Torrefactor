@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace TorrefactorApi.Service
 {
 
-  public interface IUserListener
+  public interface IListener
   {
   }
 
