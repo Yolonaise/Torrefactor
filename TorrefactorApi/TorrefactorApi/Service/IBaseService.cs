@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 namespace TorrefactorApi.Service
 {
 
-  public interface IListener
+  public interface IUserListener
   {
   }
 
-  public interface IBaseService<TListener> where TListener : IListener
+  public interface IBaseService<TListener> where TListener : IUserListener
   {
     IList<TListener> Listeners { get; set; }
 

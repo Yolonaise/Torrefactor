@@ -8,7 +8,7 @@ using TorrefactorApi.Repository.Repos;
 
 namespace TorrefactorApi.Service
 {
-  public interface IUserListener : IListener
+  public interface IUserListener : IUserListener
   {
     void OnUserCreated(User user);
     void OnUserConnect(User user);

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TorrefactorApi.Context;
 
 namespace TorrefactorApi.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190625123638_addApplicationModel")]
+    partial class addApplicationModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,8 +31,6 @@ namespace TorrefactorApi.Migrations
                     b.Property<string>("ApplicationDescription");
 
                     b.Property<string>("ApplicationName");
-
-                    b.Property<string>("ApplicationSecret");
 
                     b.HasKey("Id");
 

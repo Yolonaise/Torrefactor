@@ -17,11 +17,9 @@ namespace TorrefactorApi.Service.Implementation
     public UserService(IServiceProvider services, IUserRepo repo)
     {
       Listeners = new List<IUserListener>();
-      foreach(var l in services.GetServices<IUserListener>())
-      {
-        if (l != null)
-          Listeners.Add(l);
-      }
+
+      foreach (var l in services.GetServices<IUserListener>())
+        Register(l);
 
       _repo = repo;
     }

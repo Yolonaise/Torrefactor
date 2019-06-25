@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TorrefactorApi.Attributes;
 using TorrefactorApi.Repository.Model;
 using TorrefactorApi.Repository.Repos;
 using TorrefactorApi.Service;
@@ -20,6 +21,7 @@ namespace TorrefactorApi.Controllers
 
     [HttpPost]
     [Route("signin")]
+    [Restriction(needApi: true, needToken: false)]
     public async Task<IActionResult> Create([FromBody] User user)
     {
       try
@@ -34,6 +36,7 @@ namespace TorrefactorApi.Controllers
 
     [HttpGet]
     [Route("login")]
+    [Restriction(needApi: true, needToken: false)]
     public async Task<IActionResult> login([FromQuery] string login, [FromQuery] string password)
     {
       try
