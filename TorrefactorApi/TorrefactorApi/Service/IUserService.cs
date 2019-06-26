@@ -10,13 +10,13 @@ namespace TorrefactorApi.Service
 {
   public interface IUserListener : IListener
   {
-    void OnUserCreated(User user);
-    void OnUserConnect(User user);
+    void OnUserCreated(ITorrefactorContext context, User user);
+    void OnUserConnect(ITorrefactorContext context, User user);
   }
 
   public interface IUserService : IBaseService<IUserListener>
   {
-    Task<IActionResult> RegisterUser(User user);
-    Task<IActionResult> SignUser(string login, string password);
+    Task<IActionResult> RegisterUser(ITorrefactorContext context, User user);
+    Task<IActionResult> SignUser(ITorrefactorContext context, string login, string password);
   }
 }

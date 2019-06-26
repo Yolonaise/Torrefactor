@@ -1,29 +1,29 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Primitives;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TorrefactorApi.Attributes;
 using TorrefactorApi.Context;
+using TorrefactorApi.Service;
 
 namespace TorrefactorApi.Filters
 {
   public class ApiFilter : IAsyncActionFilter
   {
     private readonly UserDbContext _context;
+    private readonly ITorrefactorContext _tContext;
 
-    public ApiFilter(UserDbContext context)
+    public ApiFilter(UserDbContext context, ITorrefactorContext tContext)
     {
       _context = context;
+      _tContext = tContext;
     }
 
     public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
     {
-      await _context.SaveChangesAsync();
       var controllerActionDescriptor = context.ActionDescriptor as ControllerActionDescriptor;
 
       if (CheckApi(context, controllerActionDescriptor == null ? null : controllerActionDescriptor.MethodInfo.GetCustomAttributes(inherit: true)))
@@ -44,21 +44,21 @@ namespace TorrefactorApi.Filters
       {
         StringValues apiKey = string.Empty;
         if (!context.HttpContext.Request.Headers.TryGetValue("apiKey", out apiKey))
-        {
-          context.Result = new BadRequestObjectResult("Api is Required");
-          return false;
-        }
+          return BadRequest(context, "Api is Required");
 
         var app = _context.Applications.FirstOrDefault(a => a.ApiKey == apiKey);
         if (app == null)
-        {
-          context.Result = new BadRequestObjectResult("Api key not exist");
-          return false;
-        }
+          return BadRequest(context, "Api key not exist");
 
-        attr.App = app;
+        _tContext.CurrentApplication = app;
       }
       return true;
+    }
+
+    private bool BadRequest(ActionExecutingContext context, string msg)
+    {
+      context.Result = new BadRequestObjectResult(msg);
+      return false;
     }
   }
 }

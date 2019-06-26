@@ -24,7 +24,7 @@ namespace TorrefactorApi.Service.Implementation
       _repo = repo;
     }
 
-    public async Task<IActionResult> RegisterUser(User user)
+    public async Task<IActionResult> RegisterUser(ITorrefactorContext context, User user)
     {
       if (user == null)
         return BadRequest("the request is empty");
@@ -38,12 +38,12 @@ namespace TorrefactorApi.Service.Implementation
       await _repo.CreateUser(user);
 
       foreach (var l in Listeners)
-        l.OnUserCreated(user);
+        l.OnUserCreated(context, user);
 
       return Ok(user);
     }
 
-    public async Task<IActionResult> SignUser(string login, string password)
+    public async Task<IActionResult> SignUser(ITorrefactorContext context, string login, string password)
     {
       if (login == null)
         return BadRequest("the login information is empty");
@@ -60,7 +60,7 @@ namespace TorrefactorApi.Service.Implementation
         return BadRequest("The password is incorrect");
 
       foreach (var l in Listeners)
-        l.OnUserConnect(user);
+        l.OnUserConnect(context, user);
 
       return Ok(user);
     }

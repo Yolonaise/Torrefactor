@@ -1,4 +1,5 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
+using TorrefactorApi.Helper.Security;
 using TorrefactorApi.Repository.Model;
 
 namespace TorrefactorApi.Service.Implementation
@@ -12,14 +13,14 @@ namespace TorrefactorApi.Service.Implementation
       _handler = new JwtSecurityTokenHandler();
     }
 
-    public void OnUserConnect(User user)
+    public void OnUserConnect(ITorrefactorContext context, User user)
     {
-      
+      user.Token = TokenGenerator.Generate(user.Username, user.Password, context.CurrentApplication.ApplicationSecret);
     }
 
-    public void OnUserCreated(User user)
+    public void OnUserCreated(ITorrefactorContext context, User user)
     {
-
+      user.Token = TokenGenerator.Generate(user.Username, user.Password, context.CurrentApplication.ApplicationSecret);
     }
   }
 }
