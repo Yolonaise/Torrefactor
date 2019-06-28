@@ -31,12 +31,12 @@
     
     <Storyboard x:Key="ShowLogo">
       <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Logo" DecelerationRatio="0.5">
-        <EasingThicknessKeyFrame KeyTime="0" Value="0,100,0,-50"/>
-        <EasingThicknessKeyFrame KeyTime="0:0:0.5" Value="0,50"/>
+        <EasingThicknessKeyFrame KeyTime="0" Value="0,150,0,-150"/>
+        <EasingThicknessKeyFrame KeyTime="0:0:1" Value="0,50"/>
       </ThicknessAnimationUsingKeyFrames>
       <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Opacity)" Storyboard.TargetName="Logo" DecelerationRatio="0.5">
         <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-        <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+        <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
       </DoubleAnimationUsingKeyFrames>
     </Storyboard>
   </Window.Resources>
@@ -51,7 +51,7 @@
       <md:PackIcon Kind="Close"/>
     </Button>
     <Image x:Name="Logo" Source="/Resources/logo.png" Height="100" Margin="0,20" VerticalAlignment="Top"/>
-    <su:Login HorizontalAlignment="Center" Height="265" Width="300" DataContext="{Binding LoginDataContext}"/>
-    <su:Signin HorizontalAlignment="Center" Height="265" Width="300" DataContext="{Binding SigninDataContext}"></su:Signin>
+    <su:Login HorizontalAlignment="Center" Height="270" Width="300" DataContext="{Binding LoginDataContext}"/>
+    <su:Signin HorizontalAlignment="Center" Height="265" Width="500" DataContext="{Binding SigninDataContext}"></su:Signin>
   </Grid>
 </Window>
