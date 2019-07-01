@@ -36,11 +36,11 @@ namespace TorrefactorApi.Controllers
     [HttpGet]
     [Route("login")]
     [Restriction(needApi: true, needToken: false)]
-    public async Task<IActionResult> login([FromServices] ITorrefactorContext context, [FromQuery] string login, [FromQuery] string password)
+    public async Task<IActionResult> login([FromServices] ITorrefactorContext context, [FromQuery] string loginfo, [FromQuery] string password)
     {
       try
       {
-        return await _service.SignUser(context, login, password);
+        return await _service.SignUser(context, loginfo, password);
       }
       catch (Exception e)
       {

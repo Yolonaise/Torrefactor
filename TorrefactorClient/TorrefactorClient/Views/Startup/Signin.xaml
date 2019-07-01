@@ -39,7 +39,7 @@
       </Style.Triggers>
     </Style>
   </Grid.Style>
-  <md:Card VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+  <md:Card VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{Binding IsSignin, Converter={StaticResource InverseBoolean}}">
     <Grid>
       <StackPanel Orientation="Vertical" Margin="10,0">
         <TextBlock Text="SIGN IN" Foreground="Gray" FontWeight="Bold" FontSize="20" Margin="10"/>
@@ -48,13 +48,16 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
           </Grid.ColumnDefinitions>
-          <TextBox Grid.Column="0" Style="{StaticResource MaterialDesignFloatingHintTextBox}" md:HintAssist.Hint="Username" Margin="10,5"></TextBox>
-          <TextBox Grid.Column="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" md:HintAssist.Hint="Email" Margin="10,5"></TextBox>
+          <TextBox Grid.Column="0" Style="{StaticResource MaterialDesignFloatingHintTextBox}" md:HintAssist.Hint="Username" Margin="10,5" Text="{Binding Username}"></TextBox>
+          <TextBox Grid.Column="1" Style="{StaticResource MaterialDesignFloatingHintTextBox}" md:HintAssist.Hint="Email" Margin="10,5" Text="{Binding Email}"></TextBox>
         </Grid>
         <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" md:HintAssist.Hint="Password" Margin="10,5"></PasswordBox>
         <Button Style="{StaticResource LinkButton}" Margin="10,15,10,5" Content="Already have an account ?" Command="{Binding CommandLogin}"></Button>
-        <Button Width="100" VerticalAlignment="Bottom" Margin="20" Content="Sign in"></Button>
+        <Button Width="100" VerticalAlignment="Bottom" Margin="20" Content="Sign in" Command="{Binding CommandSignin}" 
+                md:ButtonProgressAssist.IsIndeterminate="True" md:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSignin}"/>
       </StackPanel>
+      <TextBlock Text="{Binding ErrorMessage}" Foreground="#FFCF6060" Visibility="{Binding ErrorMessage, Converter={StaticResource NullBooleanToVisibility}}"
+                 VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10"/>
     </Grid>
   </md:Card>
 </Grid>

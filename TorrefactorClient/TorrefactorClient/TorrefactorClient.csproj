@@ -41,8 +41,12 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.5.1.1345, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.5.1\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=106.6.9.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.9\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -61,10 +65,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\BooleanConverter.cs" />
     <Compile Include="Converters\VisibilityConverters.cs" />
     <Compile Include="Helpers\Ui\CommandHelpers.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Ui\MenuFeature.cs" />
+    <Compile Include="Rest\Dictionnary.cs" />
+    <Compile Include="Rest\Models\Request\SigninRequest.cs" />
+    <Compile Include="Rest\RestClient.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\Features\HomeViewModel.cs" />
     <Compile Include="ViewModels\Features\ParameterViewModel.cs" />

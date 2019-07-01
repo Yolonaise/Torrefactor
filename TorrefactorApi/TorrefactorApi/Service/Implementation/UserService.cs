@@ -28,7 +28,16 @@ namespace TorrefactorApi.Service.Implementation
     {
       if (user == null)
         return BadRequest("the request is empty");
+      
+      if (string.IsNullOrEmpty(user.Username))
+        return BadRequest("The username is empty");
 
+      if (string.IsNullOrEmpty(user.Email))
+        return BadRequest("The Email is empty");
+
+      if (string.IsNullOrEmpty(user.Password))
+        return BadRequest("The password is empty");
+      
       if (_repo.GetUserByEmail(user.Email) != null)
         return BadRequest("The email is already taken");
 

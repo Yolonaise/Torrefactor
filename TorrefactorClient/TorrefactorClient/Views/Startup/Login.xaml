@@ -39,16 +39,25 @@
       </Style.Triggers>
     </Style>
   </Grid.Style>
-  <md:Card VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+  <md:Card VerticalAlignment="Stretch" HorizontalAlignment="Stretch" IsEnabled="{Binding IsLogin, Converter={StaticResource InverseBoolean}}">
     <Grid>
       <StackPanel Orientation="Vertical" Margin="10,0">
         <TextBlock Text="LOG IN" Foreground="Gray" FontWeight="Bold" FontSize="20" Margin="10"/>
-        <TextBox  Style="{StaticResource MaterialDesignFloatingHintTextBox}" md:HintAssist.Hint="Username/Email" Margin="10,5"></TextBox>
-        <PasswordBox  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" md:HintAssist.Hint="Password" Margin="10,5"></PasswordBox>
-        <Button Style="{StaticResource LinkButton}" Margin="10,15,10,5" Content="Do not have an account ?" Command="{Binding CommandCreateAccount}"></Button>
+        <Grid>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+          </Grid.ColumnDefinitions>
+          <TextBox Grid.Column="0" Style="{StaticResource MaterialDesignFloatingHintTextBox}" md:HintAssist.Hint="Username/Email" Margin="10,5" Text="{Binding LogInfo}"></TextBox>
+          <PasswordBox Grid.Column="1" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" md:HintAssist.Hint="Password" Margin="10,5"></PasswordBox>
+        </Grid>
+        <Button Style="{StaticResource LinkButton}" Margin="10,30,10,5" Content="Do not have an account ?" Command="{Binding CommandCreateAccount}"></Button>
         <Button Style="{StaticResource LinkButton}" Margin="10,5" Content="Password forgotten ?"></Button>
-        <Button Width="100" VerticalAlignment="Bottom" Margin="0,20,0,0" Content="Log in"></Button>
+        <Button Width="100" VerticalAlignment="Bottom" Margin="0,20,0,0" Content="Log in" Command="{Binding CommandLogin}"
+                md:ButtonProgressAssist.IsIndeterminate="True" md:ButtonProgressAssist.IsIndicatorVisible="{Binding IsLogin}"></Button>
       </StackPanel>
+      <TextBlock Text="{Binding ErrorMessage}" Foreground="#FFCF6060" Visibility="{Binding ErrorMessage, Converter={StaticResource NullBooleanToVisibility}}"
+                 VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10"/>
     </Grid>
   </md:Card>
 </Grid>
