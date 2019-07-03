@@ -48,13 +48,14 @@ namespace TorrefactorClient.ViewModels
     private MainViewModel()
     {
       Menu = new MenuViewModel();
+      CurrentFeature = Menu.Features[0].View;
     }
 
     private void FeatureChange(MenuFeature obj)
     {
       if (obj == null)
         return;
-
+      
       CurrentFeature = obj.View;
     }
   }

@@ -33,7 +33,7 @@ namespace TorrefactorApi.Controllers
       }
     }
 
-    [HttpGet]
+    [HttpPost]
     [Route("login")]
     [Restriction(needApi: true, needToken: false)]
     public async Task<IActionResult> login([FromServices] ITorrefactorContext context, [FromQuery] string loginfo, [FromQuery] string password)

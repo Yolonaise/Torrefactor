@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using TorrefactorClient.Helpers.Security;
 using TorrefactorClient.Helpers.Ui;
 using TorrefactorClient.Rest;
 
@@ -15,10 +18,9 @@ namespace TorrefactorClient.ViewModels.StartUp
     private bool _isSignin;
     private bool _isVisible;
     private string _username;
-    private string _password;
     private string _email;
 
-    public CmdBinding CommandSignin { get; set; }
+    public CmdBinding<object> CommandSignin { get; set; }
     public CmdBinding CommandLogin { get; set; }
 
     public bool IsVisible
@@ -50,31 +52,34 @@ namespace TorrefactorClient.ViewModels.StartUp
       get { return _email; }
       set { _email = value; Notify(); }
     }
-
-    public string Password
-    {
-      get { return _password; }
-      set { _password = value; Notify(); }
-    }
-
+    
     public SigninViewModel()
     {
-      CommandSignin = new CmdBinding(Sign);
+      CommandSignin = new CmdBinding<object>(Sign);
     }
 
-    private async void Sign()
+    private async void Sign(object obj)
     {
+      var pwdBox = obj as PasswordBox;
+      var pwd = pwdBox == null ? new SecureString() : pwdBox.SecurePassword;
       ErrorMessage = null;
       IsSignin = true;
 
       try
       {
         var client = new TorrefactorRestClient(string.Empty);
-        var result = await client.Signin(Username, Email, Password);
+        var result = await client.Signin(Username, Email, SecurityHelper.convertToUNSecureString(pwd));
 
-        if (result.StatusCode != System.Net.HttpStatusCode.OK)
-          ErrorMessage = result.Content;
+        if (!result.IsSuccessful)
+          ErrorMessage = string.IsNullOrEmpty(result.Content) ? result.ErrorMessage : result.Content;
+        else
+        {
+          var currentWindow = App.Current.MainWindow;
+          App.Current.MainWindow = new MainWindow();
+          App.Current.MainWindow.Show();
 
+          currentWindow.Close();
+        }
       }
       finally
       {

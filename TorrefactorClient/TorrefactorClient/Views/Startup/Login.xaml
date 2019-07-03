@@ -49,11 +49,11 @@
             <ColumnDefinition></ColumnDefinition>
           </Grid.ColumnDefinitions>
           <TextBox Grid.Column="0" Style="{StaticResource MaterialDesignFloatingHintTextBox}" md:HintAssist.Hint="Username/Email" Margin="10,5" Text="{Binding LogInfo}"></TextBox>
-          <PasswordBox Grid.Column="1" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" md:HintAssist.Hint="Password" Margin="10,5"></PasswordBox>
+          <PasswordBox x:Name="PwdBox" Grid.Column="1" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" md:HintAssist.Hint="Password" Margin="10,5"/>
         </Grid>
         <Button Style="{StaticResource LinkButton}" Margin="10,30,10,5" Content="Do not have an account ?" Command="{Binding CommandCreateAccount}"></Button>
         <Button Style="{StaticResource LinkButton}" Margin="10,5" Content="Password forgotten ?"></Button>
-        <Button Width="100" VerticalAlignment="Bottom" Margin="0,20,0,0" Content="Log in" Command="{Binding CommandLogin}"
+        <Button Width="100" VerticalAlignment="Bottom" Margin="0,20,0,0" Content="Log in" Command="{Binding CommandLogin}" CommandParameter="{Binding ElementName=PwdBox}"
                 md:ButtonProgressAssist.IsIndeterminate="True" md:ButtonProgressAssist.IsIndicatorVisible="{Binding IsLogin}"></Button>
       </StackPanel>
       <TextBlock Text="{Binding ErrorMessage}" Foreground="#FFCF6060" Visibility="{Binding ErrorMessage, Converter={StaticResource NullBooleanToVisibility}}"

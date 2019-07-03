@@ -67,6 +67,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\BooleanConverter.cs" />
     <Compile Include="Converters\VisibilityConverters.cs" />
+    <Compile Include="Helpers\Security\SecurityHelper.cs" />
     <Compile Include="Helpers\Ui\CommandHelpers.cs" />
     <Compile Include="Models\BaseModel.cs" />
     <Compile Include="Models\Ui\MenuFeature.cs" />

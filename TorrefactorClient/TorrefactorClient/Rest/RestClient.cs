@@ -51,7 +51,7 @@ namespace TorrefactorClient.Rest
 
     public async Task<IRestResponse> Login(string login, string password)
     {
-      var request = GetRequest(Method.GET,
+      var request = GetRequest(Method.POST,
         $"/api/user/login?{QueryParameters.LOGIN}={login}&{QueryParameters.PASSWORD}={password}");
 
       return await ExecutePostTaskAsync(request);

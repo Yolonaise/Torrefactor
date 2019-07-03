@@ -11,7 +11,24 @@
         <RowDefinition/>
         <RowDefinition/>
       </Grid.RowDefinitions>
-      <md:Card Margin="5">
+      <Grid Grid.Row="0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <md:Card Margin="5">
+          <Grid>
+            <TextBlock Text="Welcome" FontWeight="Bold" Margin="10" Foreground="Gray"/>
+          </Grid>
+        </md:Card>
+        <md:Card Margin="5" Grid.Column="1">
+          <Grid>
+            <TextBlock Text="Notifications" FontWeight="Bold" Margin="10" Foreground="Gray"/>          
+          </Grid>
+        </md:Card>
+      </Grid>
+      <md:Card Grid.Row="1" Margin="5">
         <Grid>
           <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
