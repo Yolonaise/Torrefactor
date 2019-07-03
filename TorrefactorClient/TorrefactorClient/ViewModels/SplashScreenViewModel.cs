@@ -17,6 +17,8 @@ namespace TorrefactorClient.ViewModels
 
     public LoginViewModel LoginDataContext { get; }
 
+    public LoadingStartupViewModel LoadingDataContext { get; }
+
     public static SplashScreenViewModel Instance
     {
       get
@@ -34,7 +36,7 @@ namespace TorrefactorClient.ViewModels
 
       SigninDataContext = new SigninViewModel(this);
       LoginDataContext = new LoginViewModel(this);
-
+      LoadingDataContext = new LoadingStartupViewModel(this);
       SigninDataContext.CommandLogin = new CmdBinding(ShowLogin);
       LoginDataContext.CommandCreateAccount = new CmdBinding(ShowSignin);
 
