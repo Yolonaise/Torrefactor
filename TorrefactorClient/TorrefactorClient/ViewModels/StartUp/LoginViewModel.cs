@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security;
@@ -8,6 +9,8 @@ using System.Windows.Controls;
 using TorrefactorClient.Helpers.Security;
 using TorrefactorClient.Helpers.Ui;
 using TorrefactorClient.Rest;
+using TorrefactorClient.Rest.Models.Response;
+using TorrefactorClient.Services;
 
 namespace TorrefactorClient.ViewModels.StartUp
 {
@@ -17,6 +20,7 @@ namespace TorrefactorClient.ViewModels.StartUp
     private string _logInfo;
     private bool _isLogin;
     private bool _isVisible;
+    private IRegistrationListener _listener;
 
     public CmdBinding<object> CommandLogin { get; set; }
     public CmdBinding CommandCreateAccount { get; set; }
@@ -44,9 +48,10 @@ namespace TorrefactorClient.ViewModels.StartUp
       get { return _logInfo; }
       set { _logInfo = value; Notify(); }
     }
-    
-    public LoginViewModel()
+
+    public LoginViewModel(IRegistrationListener listener)
     {
+      _listener = listener;
       CommandLogin = new CmdBinding<object>(LogAccount);
     }
 
@@ -65,14 +70,8 @@ namespace TorrefactorClient.ViewModels.StartUp
 
         if (!result.IsSuccessful)
           ErrorMessage = string.IsNullOrEmpty(result.Content) ? result.ErrorMessage : result.Content;
-        else
-        {
-          var currentWindow = App.Current.MainWindow;
-          App.Current.MainWindow = new MainWindow();
-          App.Current.MainWindow.Show();
-
-          currentWindow.Close();
-        }
+        else if (_listener != null)
+          _listener.OnResgistrationDone(this, JsonConvert.DeserializeObject<LoginResponse>(result.Content));
       }
       finally
       {

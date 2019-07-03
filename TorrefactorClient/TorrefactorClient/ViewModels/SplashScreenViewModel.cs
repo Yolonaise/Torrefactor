@@ -1,28 +1,21 @@
 ﻿using System;
 using TorrefactorClient.Helpers.Ui;
+using TorrefactorClient.Rest.Models.Response;
+using TorrefactorClient.Services;
 using TorrefactorClient.ViewModels.StartUp;
 using TorrefactorClient.Views.Startup;
 
 namespace TorrefactorClient.ViewModels
 {
-  public class SplashScreenViewModel : BaseViewModel
+  public class SplashScreenViewModel : BaseViewModel, IRegistrationListener, ILoadingListener
   {
     private static SplashScreenViewModel _instance;
 
-    private SigninViewModel _signinDataContext;
-    private LoginViewModel _loginDataContext;
-
     public CmdBinding CommandClose { get; set; }
     
-    public SigninViewModel SigninDataContext
-    {
-      get { return _signinDataContext; }
-    }
+    public SigninViewModel SigninDataContext { get; }
 
-    public LoginViewModel LoginDataContext
-    {
-      get { return _loginDataContext; }
-    }
+    public LoginViewModel LoginDataContext { get; }
 
     public static SplashScreenViewModel Instance
     {
@@ -39,11 +32,11 @@ namespace TorrefactorClient.ViewModels
     {
       CommandClose = new CmdBinding(Close);
 
-      _signinDataContext = new SigninViewModel();
-      _loginDataContext = new LoginViewModel();
+      SigninDataContext = new SigninViewModel(this);
+      LoginDataContext = new LoginViewModel(this);
 
-      _signinDataContext.CommandLogin = new CmdBinding(ShowLogin);
-      _loginDataContext.CommandCreateAccount = new CmdBinding(ShowSignin);
+      SigninDataContext.CommandLogin = new CmdBinding(ShowLogin);
+      LoginDataContext.CommandCreateAccount = new CmdBinding(ShowSignin);
 
       ShowLogin();
     }
@@ -60,9 +53,37 @@ namespace TorrefactorClient.ViewModels
       LoginDataContext.IsVisible = true;
     }
 
+    private void HideRegistration()
+    {
+      SigninDataContext.IsVisible = false;
+      LoginDataContext.IsVisible = false;
+    }
+
     private void Close()
     {
       App.Current.Shutdown();
+    }
+
+    public void OnResgistrationDone(object sender, LoginResponse response)
+    {
+      HideRegistration();
+    }
+
+    public void OnRegistrationfailed(object sender)
+    {
+      //Fuck Off
+    }
+
+    public void OnLoadingDone(object sender)
+    {
+    }
+
+    public void OnLoadingfailed(object sender)
+    {
+    }
+
+    public void OnStepDone(object sender, LoadingDoneEventArgs args)
+    {
     }
   }
 }
