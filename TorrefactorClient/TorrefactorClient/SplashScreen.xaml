@@ -52,6 +52,7 @@
     </Button>
     <Image x:Name="Logo" Source="/Resources/logo.png" Height="100" Margin="0,20" VerticalAlignment="Top"/>
     <su:Login HorizontalAlignment="Center" Height="265" Width="500" DataContext="{Binding LoginDataContext}"/>
-    <su:Signin HorizontalAlignment="Center" Height="265" Width="500" DataContext="{Binding SigninDataContext}"></su:Signin>
+    <su:Signin HorizontalAlignment="Center" Height="265" Width="500" DataContext="{Binding SigninDataContext}"/>
+    <su:LoadingStartUp DataContext="{Binding LoadingDataContext}"></su:LoadingStartUp>
   </Grid>
 </Window>

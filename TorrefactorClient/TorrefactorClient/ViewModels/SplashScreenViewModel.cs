@@ -37,6 +37,7 @@ namespace TorrefactorClient.ViewModels
       SigninDataContext = new SigninViewModel(this);
       LoginDataContext = new LoginViewModel(this);
       LoadingDataContext = new LoadingStartupViewModel(this);
+
       SigninDataContext.CommandLogin = new CmdBinding(ShowLogin);
       LoginDataContext.CommandCreateAccount = new CmdBinding(ShowSignin);
 
@@ -69,6 +70,8 @@ namespace TorrefactorClient.ViewModels
     public void OnResgistrationDone(object sender, LoginResponse response)
     {
       HideRegistration();
+      LoadingDataContext.IsVisible = true;
+      LoadingDataContext.Start();
     }
 
     public void OnRegistrationfailed(object sender)

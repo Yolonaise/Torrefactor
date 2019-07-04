@@ -23,6 +23,8 @@ namespace TorrefactorClient.ViewModels.StartUp
       _listener = listener;
     }
 
-
+    internal void Start()
+    {
+    }
   }
 }
