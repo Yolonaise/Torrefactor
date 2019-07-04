@@ -53,7 +53,7 @@
         </Grid>
         <PasswordBox x:Name="PwdBox" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" md:HintAssist.Hint="Password" Margin="10,5"></PasswordBox>
         <Button Style="{StaticResource LinkButton}" Margin="10,15,10,5" Content="Already have an account ?" Command="{Binding CommandLogin}"></Button>
-        <Button Width="100" VerticalAlignment="Bottom" Margin="20" Content="Sign in" Command="{Binding CommandSignin}" CommandParameter="{Binding ElementName=PwdBox}"
+        <Button Foreground="White" Width="100" VerticalAlignment="Bottom" Margin="20" Content="Sign in" Command="{Binding CommandSignin}" CommandParameter="{Binding ElementName=PwdBox}"
                 md:ButtonProgressAssist.IsIndeterminate="True" md:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSignin}"/>
       </StackPanel>
       <TextBlock Text="{Binding ErrorMessage}" Foreground="#FFCF6060" Visibility="{Binding ErrorMessage, Converter={StaticResource NullBooleanToVisibility}}"
