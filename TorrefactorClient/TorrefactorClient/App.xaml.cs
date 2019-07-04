@@ -13,5 +13,9 @@ namespace TorrefactorClient
   /// </summary>
   public partial class App : Application
   {
+    private void StartUp(object sender, StartupEventArgs args)
+    {
+
+    }
   }
 }
