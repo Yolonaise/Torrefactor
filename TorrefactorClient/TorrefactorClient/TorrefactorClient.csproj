@@ -78,6 +78,7 @@
     <Compile Include="Converters\VisibilityConverters.cs" />
     <Compile Include="Helpers\Security\SecurityHelper.cs" />
     <Compile Include="Helpers\Ui\CommandHelpers.cs" />
+    <Compile Include="Services\IInitializable.cs" />
     <Compile Include="Services\ILoadingListener.cs" />
     <Compile Include="Services\IRegistrationListener.cs" />
     <Compile Include="Models\BaseModel.cs" />
