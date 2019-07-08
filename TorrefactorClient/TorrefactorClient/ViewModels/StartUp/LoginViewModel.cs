@@ -63,7 +63,7 @@ namespace TorrefactorClient.ViewModels.StartUp
 
 #if DEBUG
       if(string.IsNullOrEmpty(LogInfo))
-        LogInfo = "arnaud.schaal9@gmail.com";
+        _logInfo = "arnaud.schaal9@gmail.com";
       if (pwd.Length == 0)
       {
         pwd = new SecureString();
@@ -90,7 +90,7 @@ namespace TorrefactorClient.ViewModels.StartUp
         if (!result.IsSuccessful)
           ErrorMessage = string.IsNullOrEmpty(result.Content) ? result.ErrorMessage : result.Content;
         else if (_listener != null)
-          _listener.OnResgistrationDone(this, JsonConvert.DeserializeObject<LoginResponse>(result.Content));
+          await _listener.OnResgistrationDone(this, JsonConvert.DeserializeObject<LoginResponse>(result.Content));
       }
       finally
       {
