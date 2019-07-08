@@ -9,7 +9,7 @@ namespace TorrefactorClient.Services
 {
   public interface IRegistrationListener
   {
-    void OnResgistrationDone(object sender, LoginResponse response);
-    void OnRegistrationfailed(object sender);
+    Task OnResgistrationDone(object sender, LoginResponse response);
+    Task OnRegistrationfailed(object sender);
   }
 }

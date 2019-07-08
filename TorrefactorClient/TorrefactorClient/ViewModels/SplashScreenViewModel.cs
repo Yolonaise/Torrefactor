@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using TorrefactorClient.Helpers.Ui;
 using TorrefactorClient.Rest.Models.Response;
 using TorrefactorClient.Services;
@@ -67,27 +68,40 @@ namespace TorrefactorClient.ViewModels
       App.Current.Shutdown();
     }
 
-    public void OnResgistrationDone(object sender, LoginResponse response)
+    public async Task OnResgistrationDone(object sender, LoginResponse response)
     {
       HideRegistration();
       LoadingDataContext.IsVisible = true;
-      LoadingDataContext.Start();
+      await LoadingDataContext.Start();
     }
 
-    public void OnRegistrationfailed(object sender)
+    public async Task OnRegistrationfailed(object sender)
     {
       //Fuck Off
     }
 
     public void OnLoadingDone(object sender)
     {
+      var view = App.Current.MainWindow;
+      view.Hide();
+
+      App.Current.MainWindow = new MainWindow();
+      App.Current.MainWindow.Show();
+
+      view.Close();
     }
 
     public void OnLoadingfailed(object sender)
     {
+      ShowLogin();
+      LoadingDataContext.IsVisible = false;
     }
 
     public void OnStepDone(object sender, LoadingDoneEventArgs args)
+    {
+    }
+
+    public void OnStepStart(object sender, LoadingDoneEventArgs args)
     {
     }
   }

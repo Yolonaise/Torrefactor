@@ -10,6 +10,6 @@ namespace TorrefactorClient.Services
   {
     bool AtStartUp { get; }
 
-    Task Initialize();
+    Task Initialize(ILoadingListener l);
   }
 }

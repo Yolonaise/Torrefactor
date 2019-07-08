@@ -74,10 +74,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Context\ApplicationContext.cs" />
+    <Compile Include="Context\UserContext.cs" />
     <Compile Include="Converters\BooleanConverter.cs" />
     <Compile Include="Converters\VisibilityConverters.cs" />
     <Compile Include="Helpers\Security\SecurityHelper.cs" />
     <Compile Include="Helpers\Ui\CommandHelpers.cs" />
+    <Compile Include="Services\ApplicationModule.cs" />
     <Compile Include="Services\IInitializable.cs" />
     <Compile Include="Services\ILoadingListener.cs" />
     <Compile Include="Services\IRegistrationListener.cs" />

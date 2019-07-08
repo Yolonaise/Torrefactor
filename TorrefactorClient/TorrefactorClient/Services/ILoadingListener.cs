@@ -8,6 +8,11 @@ namespace TorrefactorClient.Services
 {
   public class LoadingDoneEventArgs
   {
+    public LoadingDoneEventArgs(string title)
+    {
+      NewTitle = title;
+    }
+
     public DateTime Start { get; }
     public int Percent { get; }
     public string OldTitle { get; }
@@ -18,6 +23,7 @@ namespace TorrefactorClient.Services
   {
     void OnLoadingDone(object sender);
     void OnLoadingfailed(object sender);
+    void OnStepStart(object sender, LoadingDoneEventArgs args);
     void OnStepDone(object sender, LoadingDoneEventArgs args);
   }
 }

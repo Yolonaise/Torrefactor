@@ -60,6 +60,25 @@ namespace TorrefactorClient.ViewModels.StartUp
       var pwdBox = obj as PasswordBox;
       SecureString pwd = pwdBox == null ? new SecureString() : pwdBox.SecurePassword;
 
+
+#if DEBUG
+      if(string.IsNullOrEmpty(LogInfo))
+        LogInfo = "arnaud.schaal9@gmail.com";
+      if (pwd.Length == 0)
+      {
+        pwd = new SecureString();
+        pwd.AppendChar('1');
+        pwd.AppendChar('2');
+        pwd.AppendChar('3');
+        pwd.AppendChar('4');
+        pwd.AppendChar('5');
+        pwd.AppendChar('6');
+        pwd.AppendChar('p');
+        pwd.AppendChar('w');
+        pwd.AppendChar('d');
+      }
+#endif
+
       ErrorMessage = null;
       IsLogin = true;
 

@@ -23,5 +23,5 @@
     </Style>
   </Grid.Style>
   <Image gif:ImageBehavior.AnimatedSource="/Resources/loading.gif" VerticalAlignment="Center" HorizontalAlignment="Center" Height="150" Width="150"/>
-  <TextBlock Text="Current work" Foreground="LightGray" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="55,30,0,40"/>
+  <TextBlock Text="{Binding CurrentTitle}" Foreground="LightGray" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="55,30,0,40"/>
 </Grid>
